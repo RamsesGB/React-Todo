@@ -2,12 +2,12 @@ import React from 'react';
 
 
 
-const TodoItems = props => {
+const TodoTask = props => {
     return(
-        <div>
-            <p>Task</p>
+        <div className='task'>
+            <p>{props.task.name}</p>
         </div>
     );
 }
 
-export default TodoItems;
+export default TodoTask;

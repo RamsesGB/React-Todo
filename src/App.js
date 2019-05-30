@@ -2,6 +2,8 @@ import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
+
+// Data
 const ToDoData = [
   {
     task: 'Organize Garage',
@@ -25,6 +27,7 @@ const ToDoData = [
   }
 ];
 
+// Base class 
 class App extends React.Component {
   constructor(){
     super();
@@ -33,17 +36,36 @@ class App extends React.Component {
 
     };
   }
-  
+
+  addTaskFromForm = taskName => {
+    // add task from TodoForm.js to App.js
+    const newTask = {
+      task: taskName,
+      id: Date.now(),
+      completed: false
+    };
+
+    this.setState(prevState => {
+      return {
+        ToDoData: [...prevState.ToDoData, newTask]
+      };
+    });
+  };
+
+  toggleTask = cb => {
+
+  }
+
   render() {
     return (
       <div className='App'>
 
         <div className='header'>
           <h2>Hey, start your To-Do!</h2>
-          <TodoForm />
+          <TodoForm addTask={this.addTaskFromForm} />
         </div>
 
-        <TodoList />
+        <TodoList toDoTasks={this.state.ToDoData} toggleTask={this.toggleTask}/>
       </div>
     );
   }
