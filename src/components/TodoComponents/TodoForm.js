@@ -20,7 +20,7 @@ class TodoForm extends React.Component {
     addTask = event2 => {
         // method that allows user to add task into TodoForm 'this.state' data
         event2.preventDefault();
-        this.props.addTask(this.state.task);
+        this.props.addTaskFromForm(this.state.task);
         this.setState({
             task: ''
         });
@@ -37,6 +37,7 @@ class TodoForm extends React.Component {
                 name='task'
                 value={this.state.task}
                 onChange={this.handleChanges}/>
+                <button>Create Task!</button>
             </form>
         );
     };
