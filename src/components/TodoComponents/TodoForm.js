@@ -32,6 +32,7 @@ class TodoForm extends React.Component {
 
     render(){
         return(
+        <div>
             <form onSubmit={this.addTask}>
                 <input
                 name='task'
@@ -39,6 +40,8 @@ class TodoForm extends React.Component {
                 onChange={this.handleChanges}/>
                 <button>Create Task!</button>
             </form>
+                
+        </div>
         );
     };
 }

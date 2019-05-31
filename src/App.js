@@ -52,7 +52,36 @@ class App extends React.Component {
     });
   };
 
-  toggleTask = cb => {
+  toggleTask = id => {
+    this.setState(prevState => {
+      return {
+        ToDoData: prevState.ToDoData.map(task => {
+          if (task.id === id){
+            return {
+              ...task,
+              completed: !task.completed
+            };
+          }
+          else {
+            return task;
+          }
+        })
+      };
+    });
+  };
+
+  clearCompleted = completed => {
+    this.setState(prevState => {
+      return {
+        ToDoData: prevState.ToDoData.map(task => {
+          if (task.completed === 'true'){
+            return
+          }
+          
+        })
+        
+      };
+    })
 
   }
 
@@ -64,8 +93,8 @@ class App extends React.Component {
           <h2>Hey, start your To-Do!</h2>
           <TodoForm addTaskFromForm={this.addTaskFromForm} />
         </div>
-
-        <TodoList toDoTasks={this.state.ToDoData} toggleTask={this.toggleTask}/>
+        <button onClick={this.clearCompleted}>Clear Completed</button>
+        <TodoList toDoDataArray={this.state.ToDoData} toggleTaskFunc={this.toggleTask}/>
       </div>
     );
   }

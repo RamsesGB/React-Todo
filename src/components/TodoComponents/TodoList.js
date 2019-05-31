@@ -7,11 +7,11 @@ import TodoTask from './Todo';
 const TodoList = props => {
     return(
         <div className='task-list'>
-            {props.toDoTasks.map(task => {
+            {props.toDoDataArray.map(task => {
                 return (
                     <TodoTask 
                         key={task.id}
-                        toggleTask={props.toggleTask}
+                        toggleTaskFunc={props.toggleTaskFunc}
                         task={task}
                     />
                 );
